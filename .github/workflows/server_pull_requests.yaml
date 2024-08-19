@@ -23,6 +23,8 @@ jobs:
               run: |
                 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
                 nvm use system
+                export NVM_DIR=~/.nvm
+                source ~/.nvm/nvm.sh
                 # nvm install 19
             
             - name: Install Dependencies
