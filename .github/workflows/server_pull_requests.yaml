@@ -21,7 +21,8 @@ jobs:
             
             - name: Setup Node
               run: |
-                nvm install 19
+                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+                # nvm install 19
             
             - name: Install Dependencies
               run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
