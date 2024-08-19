@@ -22,5 +22,8 @@ jobs:
             - name: Install Dependencies
               run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
             
+            - name: Start sail
+              run: ./vendor/bin/sail up -d
+
             - name: Run linter
               run: ./vendor/bin/sail php ./vendor/bin/phpstan
