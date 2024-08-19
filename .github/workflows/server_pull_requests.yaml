@@ -31,7 +31,7 @@ jobs:
               run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
             
             - name: Start sail
-              run: ./vendor/bin/sail version
+              run: ./vendor/bin/sail --version
 
             - name: Run linter
               run: ./vendor/bin/sail php ./vendor/bin/phpstan
