@@ -20,7 +20,9 @@ jobs:
                     php-version: '8.3'
             
             - name: Setup Node
-              uses: actions/setup-node@v4
+              run: |
+                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+                nvm install 19
             
             - name: Install Dependencies
               run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
