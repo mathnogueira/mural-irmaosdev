@@ -31,7 +31,7 @@ class ArticleResource extends JsonResource
         $user = $request->user();
 
         $favorited = false;
-        if ($user !== NULL && $this->resource->favoredBy($user)) {
+        if ($user != null && $this->resource->favoredBy($user)) {
             $favorited = true;
         }
 
@@ -43,9 +43,6 @@ class ArticleResource extends JsonResource
             'tagList' => new TagsCollection($this->resource->tags),
             'createdAt' => $this->resource->created_at,
             'updatedAt' => $this->resource->updated_at,
-            // 'favorited' => $this->when($user !== null, fn() =>
-            //     $this->resource->favoredBy($user)
-            // ),
             'favorited' => $favorited,
             'favoritesCount' => $this->resource->favoredUsers->count(),
             'author' => new ProfileResource($this->resource->author),
