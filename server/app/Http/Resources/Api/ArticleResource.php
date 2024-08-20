@@ -31,7 +31,7 @@ class ArticleResource extends JsonResource
         $user = $request->user();
 
         $favorited = false;
-        if ($user && $this->resource->favoredBy($user)) {
+        if ($user !== null && $this->resource->favoredBy($user)) {
             $favorited = true;
         }
 
