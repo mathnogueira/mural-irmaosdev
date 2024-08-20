@@ -30,6 +30,11 @@ class ArticleResource extends JsonResource
         /** @var \App\Models\User|null $user */
         $user = $request->user();
 
+        $favorited = false;
+        if ($user && $this->resource->favoredBy($user)) {
+            $favorited = true;
+        }
+
         return [
             'slug' => $this->resource->slug,
             'title' => $this->resource->title,
@@ -41,7 +46,7 @@ class ArticleResource extends JsonResource
             // 'favorited' => $this->when($user !== null, fn() =>
             //     $this->resource->favoredBy($user)
             // ),
-            'favorited' => $user && $this->resource->favoredBy($user) ?? false,
+            'favorited' => $favorited,
             'favoritesCount' => $this->resource->favoredUsers->count(),
             'author' => new ProfileResource($this->resource->author),
         ];
